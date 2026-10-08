@@ -1,0 +1,153 @@
+[
+  {
+    "id": "10492",
+    "customerId": "customer-101",
+    "customerName": "Rishabh",
+    "email": "rishabh@example.com",
+    "status": "OUT_FOR_DELIVERY",
+    "expectedDelivery": "Today by 8 PM",
+    "items": [
+      {
+        "name": "Wireless Headphones",
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 2499,
+    "currency": "INR"
+  },
+  {
+    "id": "10501",
+    "customerId": "customer-102",
+    "customerName": "Ananya",
+    "email": "quant.rishabh@gmail.com",
+    "status": "DELIVERED",
+    "deliveredAt": "2026-10-07T11:00:00+05:30",
+    "expectedDelivery": "Delivered yesterday",
+    "items": [
+      {
+        "name": "Running Shoes",
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 5499,
+    "currency": "INR"
+  },
+  {
+    "id": "10600",
+    "customerId": "customer-103",
+    "customerName": "Vikram",
+    "email": "vikram@example.com",
+    "status": "DELIVERED",
+    "deliveredAt": "2026-10-06T11:00:00+05:30",
+    "expectedDelivery": "Delivered two days ago",
+    "items": [
+      {
+        "name": "Premium Laptop",
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 18499,
+    "currency": "INR"
+  },
+  {
+    "id": "10601",
+    "customerId": "customer-104",
+    "customerName": "Meera",
+    "email": "meera@example.com",
+    "status": "DELIVERED",
+    "deliveredAt": "2026-10-07T15:00:00+05:30",
+    "expectedDelivery": "Delivered yesterday",
+    "items": [
+      {
+        "name": "Smartphone",
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 12500,
+    "currency": "INR"
+  },
+  {
+    "id": "10700",
+    "customerId": "customer-105",
+    "customerName": "Kabir",
+    "email": "kabir@example.com",
+    "status": "DELIVERED",
+    "deliveredAt": "2026-08-20T10:00:00+05:30",
+    "expectedDelivery": "Delivered on August 20",
+    "items": [
+      {
+        "name": "Bluetooth Speaker",
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 3499,
+    "currency": "INR"
+  },
+  {
+    "id": "10701",
+    "customerId": "customer-106",
+    "customerName": "Isha",
+    "email": "isha@example.com",
+    "status": "DELIVERED",
+    "deliveredAt": "2026-07-15T10:00:00+05:30",
+    "expectedDelivery": "Delivered on July 15",
+    "items": [
+      {
+        "name": "Coffee Maker",
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 6299,
+    "currency": "INR"
+  },
+  {
+    "id": "10800",
+    "customerId": "customer-107",
+    "customerName": "Priya",
+    "email": "priya@example.com",
+    "status": "OUT_FOR_DELIVERY",
+    "expectedDelivery": "Tomorrow by 6 PM",
+    "items": [
+      {
+        "name": "Smartwatch",
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 7999,
+    "currency": "INR"
+  },
+  {
+    "id": "10801",
+    "customerId": "customer-108",
+    "customerName": "Arjun",
+    "email": "arjun@example.com",
+    "status": "DELIVERED",
+    "deliveredAt": "2026-10-05T14:00:00+05:30",
+    "expectedDelivery": "Delivered three days ago",
+    "items": [
+      {
+        "name": "Wireless Keyboard",
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 2999,
+    "currency": "INR"
+  },
+  {
+    "id": "10802",
+    "customerId": "customer-109",
+    "customerName": "Sana",
+    "email": "sana@example.com",
+    "status": "DELIVERED",
+    "deliveredAt": "2026-10-03T10:30:00+05:30",
+    "expectedDelivery": "Delivered five days ago",
+    "items": [
+      {
+        "name": "Air Fryer",
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 8999,
+    "currency": "INR"
+  }
+]

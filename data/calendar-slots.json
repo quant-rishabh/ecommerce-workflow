@@ -1,0 +1,17 @@
+[
+  {
+    "slotId": "today-evening",
+    "label": "Today, 6:00 PM - 7:00 PM",
+    "preference": "today_evening"
+  },
+  {
+    "slotId": "tomorrow-morning",
+    "label": "Tomorrow, 10:00 AM - 11:00 AM",
+    "preference": "tomorrow_morning"
+  },
+  {
+    "slotId": "tomorrow-afternoon",
+    "label": "Tomorrow, 2:00 PM - 3:00 PM",
+    "preference": "tomorrow_afternoon"
+  }
+]

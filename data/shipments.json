@@ -1,0 +1,53 @@
+[
+  {
+    "orderId": "10492",
+    "carrier": "DHL",
+    "trackingStatus": "OUT_FOR_DELIVERY",
+    "currentLocation": "Mumbai delivery hub",
+    "estimatedArrival": "Today by 8 PM",
+    "delayMinutes": 38
+  },
+  {
+    "orderId": "10501",
+    "carrier": "BlueDart",
+    "trackingStatus": "DELIVERED",
+    "currentLocation": "Customer address",
+    "estimatedArrival": "Delivered yesterday"
+  },
+  {
+    "orderId": "10600",
+    "carrier": "FedEx",
+    "trackingStatus": "DELIVERED",
+    "currentLocation": "Customer address",
+    "estimatedArrival": "Delivered two days ago"
+  },
+  {
+    "orderId": "10601",
+    "carrier": "Delhivery",
+    "trackingStatus": "DELIVERED",
+    "currentLocation": "Customer address",
+    "estimatedArrival": "Delivered yesterday"
+  },
+  {
+    "orderId": "10800",
+    "carrier": "Ecom Express",
+    "trackingStatus": "OUT_FOR_DELIVERY",
+    "currentLocation": "Pune delivery hub",
+    "estimatedArrival": "Tomorrow by 6 PM",
+    "delayMinutes": 0
+  },
+  {
+    "orderId": "10801",
+    "carrier": "BlueDart",
+    "trackingStatus": "DELIVERED",
+    "currentLocation": "Customer address",
+    "estimatedArrival": "Delivered three days ago"
+  },
+  {
+    "orderId": "10802",
+    "carrier": "Delhivery",
+    "trackingStatus": "DELIVERED",
+    "currentLocation": "Customer address",
+    "estimatedArrival": "Delivered five days ago"
+  }
+]

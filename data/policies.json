@@ -1,0 +1,18 @@
+{
+  "REFUND": {
+    "automaticRefundLimit": 10000,
+    "currency": "INR"
+  },
+  "CANCELLATION": {
+    "cancellableStatuses": ["PROCESSING", "CONFIRMED"]
+  },
+  "DAMAGED_ITEM": {
+    "eligibleActions": ["REPLACEMENT", "REFUND"]
+  },
+  "WRONG_ITEM": {
+    "eligibleActions": ["REPLACEMENT", "REFUND"]
+  },
+  "RETURN": {
+    "returnWindowDays": 30
+  }
+}

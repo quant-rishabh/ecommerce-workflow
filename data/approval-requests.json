@@ -1,0 +1,37 @@
+[
+  {
+    "id": "AP-1791437363031",
+    "type": "REFUND",
+    "orderId": "10492",
+    "customerName": "Rishabh",
+    "amount": 2499,
+    "currency": "INR",
+    "reason": "Refund is within the automatic refund limit.",
+    "status": "APPROVED",
+    "createdAt": "2026-10-08T05:29:23.031Z",
+    "decidedAt": "2026-10-08T05:29:25.250Z"
+  },
+  {
+    "id": "AP-1791437539166",
+    "type": "REFUND",
+    "orderId": "10492",
+    "customerName": "Rishabh",
+    "amount": 2499,
+    "currency": "INR",
+    "reason": "Refund is within the automatic refund limit.",
+    "status": "PENDING",
+    "createdAt": "2026-10-08T05:32:19.166Z"
+  },
+  {
+    "id": "AP-1791437998738",
+    "type": "REFUND",
+    "orderId": "10600",
+    "customerName": "Vikram",
+    "amount": 18499,
+    "currency": "INR",
+    "reason": "Refund amount exceeds the automatic refund limit.",
+    "status": "APPROVED",
+    "createdAt": "2026-10-08T05:39:58.738Z",
+    "decidedAt": "2026-10-08T05:41:25.981Z"
+  }
+]

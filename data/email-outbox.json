@@ -1,0 +1,38 @@
+[
+  {
+    "to": "rishabh@example.com",
+    "subject": "Pickup scheduled for order #10492",
+    "body": "Your pickup has been scheduled for Tomorrow, 10:00 AM - 11:00 AM.",
+    "orderId": "10492",
+    "id": "EMAIL-1791439417294",
+    "status": "SENT_MOCK",
+    "sentAt": "2026-10-08T06:03:37.294Z"
+  },
+  {
+    "to": "vikram@example.com",
+    "subject": "Pickup scheduled for order #10600",
+    "body": "Your pickup has been scheduled for Tomorrow, 2:00 PM - 3:00 PM.",
+    "orderId": "10600",
+    "id": "EMAIL-1791458313868",
+    "status": "SENT_MOCK",
+    "sentAt": "2026-10-08T11:18:33.868Z"
+  },
+  {
+    "to": "quant.rishabh@gmail.com",
+    "subject": "Pickup scheduled for order #10501",
+    "body": "Your pickup has been scheduled for Tomorrow, 10:00 AM - 11:00 AM.",
+    "orderId": "10501",
+    "id": "EMAIL-1791459467417",
+    "status": "SENT_MOCK",
+    "sentAt": "2026-10-08T11:37:47.417Z"
+  },
+  {
+    "to": "quant.rishabh@gmail.com",
+    "subject": "Pickup scheduled for order #10501",
+    "body": "Your pickup has been scheduled for Tomorrow, 10:00 AM - 11:00 AM.",
+    "orderId": "10501",
+    "id": "EMAIL-1791460550188",
+    "status": "SENT_MOCK",
+    "sentAt": "2026-10-08T11:55:50.188Z"
+  }
+]

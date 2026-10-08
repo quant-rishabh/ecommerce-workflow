@@ -1,0 +1,965 @@
+Yes — chat is actually a very good interface, especially if you want to demonstrate a customer-support/HR-style agent. But the key is: the chat should be the front door, not the whole product.
+I checked Maxify's current public material again. Their own site explicitly says Maxia is a chat + voice interface for reps/customers, while the underlying system performs real actions through CRM, SMS, email, scheduling, etc. Maxify Technologies
+So your thinking is right.
+Think of it like Amazon / Flipkart / Zomato
+Imagine a customer says:
+"My order hasn't arrived yet. Can you check?"
+
+A normal chatbot does:
+"Sure! Your order is delayed."
+
+That's not interesting enough for Maxify.
+An agent does:
+Customer
+   ↓
+Chat
+   ↓
+AI Agent
+   ↓
+Identify order
+   ↓
+Check order DB
+   ↓
+Check shipment API
+   ↓
+Determine reason
+   ↓
+Take action
+   ↓
+Update customer
+   ↓
+Update CRM / case
+
+For example:
+Customer: My order #1234 hasn't arrived.
+
+Agent:
+get_order(1234)
+        ↓
+get_shipment(1234)
+        ↓
+Shipment delayed
+        ↓
+Check company policy
+        ↓
+Eligible for compensation?
+        ↓
+YES
+        ↓
+Create compensation request
+        ↓
+Send customer message
+        ↓
+Close case
+
+That is an agentic customer-support workflow.
+And there are MUCH better customer cases
+1. "Where is my order?"
+Simple.
+Integrations:
+- Orders
+- Shipping
+- Customer database
+- Email/SMS
+2. "I received the wrong product."
+Much better.
+Customer:
+"I ordered Nike shoes but received the wrong size."
+
+Agent:
+Chat
+ ↓
+Get order
+ ↓
+Get order items
+ ↓
+Check delivery
+ ↓
+Understand complaint
+ ↓
+Check return policy
+ ↓
+Create return
+ ↓
+Generate return label
+ ↓
+Notify customer
+
+Integrations:
+Commerce + Shipping + Policy + Email
+3. "I want a refund."
+Even better for demonstrating governance.
+Customer:
+"I want a ₹18,000 refund."
+
+Agent:
+Get order
+ ↓
+Check refund policy
+ ↓
+Check previous refunds
+ ↓
+Calculate refundable amount
+ ↓
+₹18,000 > auto-refund limit
+ ↓
+Human approval
+ ↓
+Approved
+ ↓
+Refund API
+ ↓
+Verify refund
+ ↓
+Email customer
+
+Now you've demonstrated:
+- LLM
+- tools
+- database
+- business rules
+- approval
+- external API
+- audit trail
+- failure handling
+That's exactly the type of architecture Maxify talks about: governed agents, permission boundaries, approval gates and audit trails. GoMaxify
+HR is also interesting
+You could build an HR Employee Agent.
+Employee comes into chat:
+"How many vacation days do I have?"
+
+Agent:
+Chat
+ ↓
+Employee DB
+ ↓
+Get leave balance
+ ↓
+Answer
+
+Easy.
+But make it:
+"I need leave from Dec 10–14. Can you apply for it?"
+
+Now:
+Chat
+ ↓
+Identify employee
+ ↓
+Check leave balance
+ ↓
+Check company policy
+ ↓
+Check calendar
+ ↓
+Submit leave request
+ ↓
+Manager approval
+ ↓
+Update HR system
+ ↓
+Notify employee
+
+Integrations:
+- Employee DB
+- HR system
+- Calendar
+- Email/Slack
+- Approval system
+That's a legitimate agent.
+Hiring is another possibility
+This one could be very good for your resume, but slightly more complicated.
+Candidate says:
+"I applied for Software Engineer. What's my status?"
+
+Agent:
+Candidate
+ ↓
+ATS
+ ↓
+Application status
+ ↓
+Interview status
+ ↓
+Calendar
+ ↓
+Respond
+
+Or recruiter says:
+"Find candidates for this C++ embedded role."
+
+Agent:
+Job description
+ ↓
+Candidate DB
+ ↓
+Resume parser
+ ↓
+Skill matching
+ ↓
+Rank candidates
+ ↓
+Recruiter approval
+ ↓
+Send interview invitation
+ ↓
+Calendar
+
+Integrations:
+ATS
+Resume storage
+LLM
+Calendar
+Email
+Candidate DB
+
+But there's a downside: hiring has sensitive decisions, so you'd need to be very careful about automated candidate ranking and explain that the AI assists rather than makes final employment decisions.
+For a quick Maxify interview project, I wouldn't choose this first.
+Zomato / Swiggy style is actually GREAT
+You could build:
+Food Delivery Support Agent
+Customer:
+"My food is 45 minutes late."
+
+Agent:
+Customer
+ ↓
+Order DB
+ ↓
+Restaurant API
+ ↓
+Delivery API
+ ↓
+Check ETA
+ ↓
+Check compensation policy
+
+Then:
+"Your delivery is delayed by 38 minutes. The restaurant has completed the order but the rider is delayed. You're eligible for a ₹100 credit. Would you like me to apply it?"
+
+Customer:
+"Yes."
+
+Then:
+Credit API
+ ↓
+Create ₹100 credit
+ ↓
+Update order
+ ↓
+Send notification
+ ↓
+Audit
+
+That's very easy to understand in an interview.
+Amazon-style is even broader
+You could make one Customer Operations Agent supporting:
+Order status
+"Where's my order?"
+
+Return
+"I want to return this."
+
+Refund
+"Where is my refund?"
+
+Wrong item
+"I got the wrong product."
+
+Cancellation
+"Cancel my order."
+
+Damaged item
+"The product arrived damaged."
+
+All through one chat interface.
+And underneath:
+                 CUSTOMER CHAT
+                       │
+                       ▼
+                  AI AGENT
+                       │
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+       Orders       Shipping      Policy
+          │            │            │
+          └────────────┼────────────┘
+                       ▼
+                  ACTIONS
+             ┌─────────┼─────────┐
+             ▼         ▼         ▼
+          Return     Refund     Email
+                       │
+                       ▼
+                  Human Approval
+                       │
+                       ▼
+                    Audit
+
+This is probably the easiest project for you to build and explain.
+But here's the important distinction
+If you build:
+❌ "Amazon customer-support chatbot"
+It sounds basic.
+If you build:
+✅ "Customer Operations Agent"
+it sounds much stronger.
+Because the chat is merely the interface.
+The actual product is:
+An agent that resolves customer issues by interacting with business systems under company policies and approval rules.
+
+That's much closer to what Maxify describes as its agent workforce and CRM. Their current platform explicitly covers customer service, CRM, revenue, and operational workflows, while their Maxia agent handles customer/reps through chat and voice. GoMaxify
+What I would build if I were you
+I'd make this:
+OpsPilot — Customer Operations Agent
+UI
+A simple ChatGPT-like interface:
+┌─────────────────────────────────────┐
+│ OpsPilot                            │
+│ Customer Operations Agent           │
+├─────────────────────────────────────┤
+│                                     │
+│ Customer: Rishabh                   │
+│                                     │
+│ You:                                │
+│ "My order #10492 arrived damaged"   │
+│                                     │
+│ Agent:                              │
+│ I'll check your order and warranty  │
+│ policy.                             │
+│                                     │
+│ ✓ Order found                       │
+│ ✓ Product verified                  │
+│ ✓ Delivery verified                 │
+│ ✓ Damage policy checked             │
+│                                     │
+│ Your order is eligible for a        │
+│ replacement.                        │
+│                                     │
+│ [Request Replacement]               │
+│ [Request Refund]                    │
+└─────────────────────────────────────┘
+
+But alongside the chat:
+Agent Trace
+08:41:21  Intent detected: DAMAGED_ITEM
+08:41:22  getOrder(10492)
+08:41:22  getShipment(10492)
+08:41:23  checkPolicy("damaged_item")
+08:41:23  Replacement eligible
+08:41:24  Approval required
+
+And an approval screen:
+Refund Request
+
+Order: #10492
+Customer: Rishabh
+Amount: ₹18,499
+Reason: Damaged item
+
+Policy: Refund > ₹10,000 requires approval
+
+[ APPROVE ]   [ REJECT ]
+
+That's where it becomes much more impressive.
+Your integrations
+I'd use mock versions of:
+Integration	What it does
+Supabase	Customers, orders, cases, workflow state
+Commerce API	Order/product information
+Shipping API	Tracking, delivery status, return label
+Payment API	Refund
+Email/SMS	Customer notification
+Policy/Company Memory	Return/refund rules
+Approval system	Human approval
+
+
+And the agent has tools:
+getCustomer()
+getOrder()
+getShipment()
+checkPolicy()
+createReturn()
+createReturnLabel()
+requestRefund()
+getRefundStatus()
+sendNotification()
+createSupportCase()
+requestHumanApproval()
+
+That is enough.
+You don't need 30 integrations.
+And YES — make it chat-first
+I think that's actually the right choice for your first agent project.
+Because then during the interview you can literally say:
+"The user interacts through chat, but chat is only the interface. The agent has access to typed tools, persistent workflow state and controlled integrations. The LLM decides what action is needed, while the backend enforces permissions, policies and side effects."
+
+That one sentence demonstrates that you understand agent architecture.
+And it maps very closely to what Maxify publicly describes: their Maxia is a chat/voice interface, but the actual value is the agent workforce operating across CRM, sales, customer support and business systems. Maxify Technologies
+My ranking for you now
+🥇 Amazon/Flipkart/Zomato-style Customer Operations Agent — easiest to build + easiest to demo + excellent agent architecture.
+🥈 HR Employee Operations Agent — interesting, but less aligned with Maxify's strongest public use cases.
+🥉 Hiring Agent — impressive but introduces fairness/privacy complexity.
+4. Solar Lead/Quote Agent — most directly aligned with Maxify's actual domain, but more domain-specific and harder to build.
+If your interview is coming soon, I'd pick #1 and make it technically deep rather than domain-specific. Maxify itself says its AI-applied-business work includes sales operations, customer support and ops automation, so this isn't an artificial use case. Maxify Technologies
+
+
+
+
+
+
+
+
+
+
+
+
+
+and what app we can integrate ?
+
+
+
+
+
+
+
+
+
+
+
+
+Yes. For the Amazon/Flipkart/Zomato-style Customer Operations Agent, I would integrate real apps where practical + mock APIs where real credentials/business access would be a pain.
+The goal is not to have 15 integrations. 4–6 good integrations are enough.
+Recommended stack
+App / service	What we'd use it for	Real or mock?
+Supabase	Customers, orders, cases, workflow state, approvals, audit logs	Real
+Gmail / Resend	Send customer emails	Real or mock
+Twilio	SMS/WhatsApp-style notifications	Can be real
+Stripe	Refund/payment workflow	Stripe test mode
+Shippo	Shipping/tracking/return labels	Can use sandbox/test
+Slack	Human approval/escalation	Real
+LLM API	Agent reasoning + tool selection	Real
+
+
+So the architecture becomes:
+                    CUSTOMER
+                       │
+                       ▼
+                 ┌───────────┐
+                 │ Chat UI   │
+                 └─────┬─────┘
+                       │
+                       ▼
+                 ┌───────────┐
+                 │ AI AGENT  │
+                 └─────┬─────┘
+                       │
+              ┌────────┼────────┐
+              ▼        ▼        ▼
+          Supabase   Shipping  Stripe
+             │          │        │
+             │          │        │
+             └──────┬───┴────────┘
+                    ▼
+              Business Rules
+                    │
+              ┌─────┴─────┐
+              ▼           ▼
+           Slack       Email/SMS
+          Approval     Notification
+
+The really nice demo
+Customer says:
+"My order #10492 arrived damaged. I want a refund."
+
+Agent:
+1. Supabase → find customer/order
+2. Shipping API → verify delivery
+3. Policy engine → determine eligibility
+4. Stripe test mode → prepare refund
+5. Since refund is > ₹10,000 → Slack approval
+6. Human clicks Approve
+7. Stripe → execute test refund
+8. Gmail/Resend → email customer
+9. Supabase → save everything
+10. Agent responds in chat:
+"Your refund of ₹18,499 has been processed. You should receive it within 5–7 business days."
+
+That is a real workflow, not a chatbot.
+One important thing
+I would not actually integrate Amazon, Flipkart, or Zomato. Their internal order/support APIs aren't something you can casually use for a portfolio project.
+Instead, make your own small Commerce API:
+CommerceService
+├── getCustomer()
+├── getOrder()
+├── getOrderItems()
+├── cancelOrder()
+└── createSupportCase()
+
+and back it with Supabase.
+Then integrate the external systems around it:
+Supabase + Stripe + Slack + email + shipping + LLM.
+That gives you the exact thing Maxify cares about: an agent operating across multiple systems with controlled side effects.
+If you want the strongest-looking version with minimal build time, I'd use Next.js + Supabase + OpenAI API + Stripe test mode + Slack + Resend and mock only the commerce/shipping APIs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+So can you tell me how would it look like? Like there is a customer chat would be there, then and what is a backend? I want to, I will polish a UI later, but first I have to understand this thing. Like we have to quickly make in half an hour, like whole app, working app, and that I want to understand. Like we want to work on the core feature initially, and then we will do other things. First we will go by phase by phase. So can you tell me, like how would be the thing would look like?
+
+
+
+
+
+
+
+
+
+
+
+
+Yes. Don't think about UI first. For the first 30 minutes, we should build the smallest possible working agent and understand the flow end-to-end.
+The mental model is:
+                    YOUR APP
+┌─────────────────────────────────────────────────────┐
+│                                                     │
+│  Customer Chat UI                                   │
+│                                                     │
+│  Customer: "Where is my order #10492?"              │
+│                         │                           │
+│                         ▼                           │
+│                  Backend / API                      │
+│                         │                           │
+│                         ▼                           │
+│                    AI Agent                         │
+│                         │                           │
+│              "I need order information"             │
+│                         │                           │
+│                         ▼                           │
+│                    Tool: getOrder()                 │
+│                         │                           │
+│                         ▼                           │
+│                    Supabase                         │
+│                         │                           │
+│              { order, status, items }                │
+│                         │                           │
+│                         ▼                           │
+│                    AI Agent                         │
+│                         │                           │
+│                         ▼                           │
+│              Final response to customer             │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+
+That's the entire core idea.
+Phase 1 — 30-minute version
+Forget Stripe, Slack, shipping, fancy UI, approvals, etc.
+We first make ONE working agent.
+User types:
+Where is my order #10492?
+
+Agent should:
+1. Understand the request.
+2. Identify that it needs order information.
+3. Call getOrder().
+4. Get the order from Supabase.
+5. Give the answer.
+That's it.
+What actually runs where?
+You have three important pieces.
+1. Frontend
+This is your chat.
+React / Next.js
+
+Customer:
+┌────────────────────────────────────┐
+│ Where is my order #10492?          │
+└────────────────────────────────────┘
+
+Agent:
+┌────────────────────────────────────┐
+│ Your order is out for delivery.    │
+│ Expected today by 8 PM.             │
+└────────────────────────────────────┘
+
+Frontend's job is basically:
+user message
+     ↓
+POST /api/chat
+     ↓
+display response
+
+The frontend should NOT talk directly to Stripe, Supabase admin APIs, etc.
+2. Backend
+This is where the interesting stuff happens.
+For Next.js, you can initially have:
+app/
+  api/
+    chat/
+      route.ts
+
+The browser sends:
+{
+  "message": "Where is my order #10492?"
+}
+
+to:
+POST /api/chat
+
+Your backend receives it.
+Then:
+Backend
+   ↓
+LLM
+
+You tell the LLM:
+You are a customer operations agent. You have access to these tools:
+- getOrder
+- getCustomer
+- getShipment
+
+The LLM looks at:
+"Where is my order #10492?"
+
+and decides:
+I need getOrder.
+
+Technically, the model returns something conceptually like:
+{
+  "tool": "getOrder",
+  "arguments": {
+    "orderId": "10492"
+  }
+}
+
+3. Tool
+This is the most important concept for you to understand.
+You write normal TypeScript functions.
+For example:
+getOrder(orderId)
+
+That function talks to Supabase.
+Conceptually:
+getOrder("10492")
+        ↓
+Supabase
+        ↓
+orders table
+        ↓
+{
+  id: 10492,
+  status: "OUT_FOR_DELIVERY",
+  expectedDelivery: "Today"
+}
+
+Then your backend gives that result back to the LLM.
+Now the LLM sees:
+User:
+Where is my order #10492?
+
+Tool result:
+Order 10492
+Status: OUT_FOR_DELIVERY
+Expected delivery: Today
+
+And generates:
+Your order #10492 is out for delivery and is expected to arrive today.
+
+Backend sends that to frontend.
+Frontend displays it.
+That's an agent.
+The loop is:
+             ┌───────────────────────┐
+             │                       │
+             ▼                       │
+User → LLM → Tool → Result → LLM ───┘
+                         │
+                         ▼
+                      Answer
+
+The LLM can decide:
+"I need another tool."
+
+For example:
+User:
+"My order is late. Can I get compensation?"
+
+The agent might do:
+LLM
+ ↓
+getOrder()
+ ↓
+order result
+ ↓
+LLM
+ ↓
+getShipment()
+ ↓
+shipment result
+ ↓
+LLM
+ ↓
+checkPolicy()
+ ↓
+policy result
+ ↓
+LLM
+ ↓
+Final answer
+
+This is where it starts becoming agentic.
+Where does Supabase fit?
+Think of Supabase as your company's memory + database.
+Initially:
+Supabase
+│
+├── customers
+├── orders
+├── shipments
+├── support_cases
+└── ...
+
+Example:
+customers
+id       name       email
+101      Rishabh    rishabh@example.com
+
+orders
+id      customer_id    status             amount
+10492   101            OUT_FOR_DELIVERY   18499
+
+shipments
+order_id    carrier    tracking_status
+10492       DHL        OUT_FOR_DELIVERY
+
+The LLM doesn't directly query Supabase.
+Instead:
+LLM
+ ↓
+getOrder()
+ ↓
+Supabase
+
+That's an important architectural distinction.
+Why not let the LLM directly access the database?
+Because then you lose control.
+You want:
+             LLM
+              │
+              │ "I want order 10492"
+              ▼
+         getOrder()
+              │
+       permission check
+              │
+       validation
+              │
+              ▼
+          Supabase
+
+Later, when we add refunds:
+LLM
+ ↓
+requestRefund()
+ ↓
+Backend checks:
+   Is order valid?
+   Is refund allowed?
+   Is amount correct?
+   Does approval exist?
+ ↓
+Stripe
+
+The LLM suggests the action. Your application controls the action.
+This is one of the biggest things you should understand for the Maxify interview.
+Then integrations come in
+Once the first thing works, we add integrations one by one.
+Phase 1
+Chat
+ ↓
+Backend
+ ↓
+LLM
+ ↓
+getOrder()
+ ↓
+Supabase
+
+Phase 2
+Add shipping:
+Chat
+ ↓
+LLM
+ ↓
+getOrder()
+ ↓
+getShipment()
+ ↓
+Shipping API
+
+Phase 3
+Add policy:
+Chat
+ ↓
+LLM
+ ↓
+getOrder()
+ ↓
+getShipment()
+ ↓
+checkPolicy()
+ ↓
+Policy
+
+Phase 4
+Add action:
+Chat
+ ↓
+LLM
+ ↓
+createReturn()
+ ↓
+Shipping API
+
+Phase 5
+Add refund:
+Chat
+ ↓
+LLM
+ ↓
+requestRefund()
+ ↓
+Approval
+ ↓
+Stripe
+
+Phase 6
+Add notification:
+Stripe
+ ↓
+Refund successful
+ ↓
+sendEmail()
+ ↓
+Customer
+
+Now you've gone from:
+"AI chatbot"
+to:
+"AI agent executing a business workflow."
+Eventually your architecture looks like this
+                         CUSTOMER
+                            │
+                            ▼
+                    ┌──────────────┐
+                    │  Chat UI     │
+                    │  Next.js     │
+                    └──────┬───────┘
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │   Backend    │
+                    │ /api/chat    │
+                    └──────┬───────┘
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │  AI AGENT    │
+                    │     LLM      │
+                    └──────┬───────┘
+                           │
+                    Tool selection
+                           │
+          ┌────────────────┼────────────────┐
+          │                │                │
+          ▼                ▼                ▼
+     getOrder()      getShipment()    checkPolicy()
+          │                │                │
+          ▼                ▼                ▼
+      Supabase        Shipping API       Policies
+          │                │                │
+          └────────────────┼────────────────┘
+                           │
+                           ▼
+                     Agent decides
+                           │
+                 ┌─────────┴─────────┐
+                 │                   │
+                 ▼                   ▼
+           createReturn()      requestRefund()
+                 │                   │
+                 ▼                   ▼
+             Shipping           Approval
+                                     │
+                                     ▼
+                                   Stripe
+                                     │
+                                     ▼
+                                  Email
+
+But we absolutely should NOT build all of this in the first 30 minutes.
+What I want you to build first
+Literally only this:
+Customer Chat
+      ↓
+POST /api/chat
+      ↓
+LLM
+      ↓
+getOrder()
+      ↓
+Supabase
+      ↓
+Order result
+      ↓
+LLM
+      ↓
+Answer
+
+And only one question:
+"Where is my order #10492?"
+
+If we can make that work end-to-end, you will understand the fundamental architecture.
+Then we add one capability at a time.
+Our development phases
+Phase 1 — 30 min
+Chat → LLM → getOrder() → Supabase → response
+
+Phase 2
+Add getShipment()
+
+Phase 3
+Add checkPolicy()
+
+Phase 4
+Add createReturn()
+
+Phase 5
+Add human approval
+
+Phase 6
+Add Stripe test refund
+
+Phase 7
+Add email/SMS
+
+Phase 8
+Add workflow state + audit trail
+
+Phase 9
+Polish UI + agent trace + dashboard
+
+That is the right order.
+And importantly, you don't need to understand LangChain, LangGraph, MCP, RAG, vector databases, multi-agent systems, etc. before starting. Get this basic loop working first:
+LLM → tool → result → LLM → action.
+
+Once you've built that yourself once, all those frameworks will make much more sense.

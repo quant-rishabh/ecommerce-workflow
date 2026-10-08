@@ -1,0 +1,12 @@
+[
+  {
+    "id": "CAL-1791439417290",
+    "orderId": "10492",
+    "customerName": "Rishabh",
+    "slotId": "tomorrow-morning",
+    "slotLabel": "Tomorrow, 10:00 AM - 11:00 AM",
+    "type": "PICKUP",
+    "status": "SCHEDULED",
+    "createdAt": "2026-10-08T06:03:37.290Z"
+  }
+]

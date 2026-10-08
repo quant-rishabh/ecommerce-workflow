@@ -1,0 +1,59 @@
+:root { --ink: #17211b; --muted: #68746b; --paper: #f4f0e8; --panel: #fffdf8; --accent: #d96b42; --line: #ded9ce; }
+* { box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; }
+body { margin: 0; color: var(--ink); background: radial-gradient(circle at 15% 15%, #e7eddf, transparent 36%), var(--paper); font-family: Georgia, "Times New Roman", serif; }
+.shell { width: min(1180px, 100%); height: 100vh; display: grid; grid-template-columns: 330px minmax(0, 1fr); align-items: stretch; gap: 18px; margin: 0 auto; padding: 24px 16px; overflow: hidden; }
+.orders-panel, .chat-panel { min-height: 0; height: 100%; overflow: hidden; background: var(--panel); border: 1px solid var(--line); box-shadow: 0 24px 70px #26332618; }
+.orders-panel { display: flex; flex-direction: column; }
+.orders-heading { display: flex; justify-content: space-between; align-items: flex-start; padding: 28px 24px 22px; border-bottom: 1px solid var(--line); }
+.orders-heading h2 { margin: 0; font-size: 28px; font-weight: 400; }
+.order-count { display: grid; place-items: center; width: 30px; height: 30px; color: var(--panel); background: var(--ink); border-radius: 50%; font: 700 12px Arial, sans-serif; }
+.order-list { flex: 1; min-height: 0; overflow-y: auto; padding: 8px; }
+.order-row { display: block; width: 100%; padding: 17px 16px; color: var(--ink); background: transparent; border: 1px solid transparent; border-bottom-color: var(--line); text-align: left; cursor: pointer; font-family: Arial, sans-serif; }
+.order-row:hover { background: #f8f5ee; }
+.order-row.selected { background: #edf1e7; border-color: #cbd8bd; box-shadow: inset 3px 0 0 var(--accent); }
+.order-row-top, .order-row-bottom { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.order-row-top strong { font-size: 15px; }
+.order-status { color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.order-status.out_for_delivery { color: var(--accent); }
+.order-status.delivered { color: #64804c; }
+.order-item { display: block; margin: 9px 0 13px; color: var(--muted); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.order-row-bottom { color: var(--muted); font-size: 11px; }
+.order-row-bottom span:first-child { color: var(--ink); font-weight: 700; }
+.delay-text { color: var(--accent); font-weight: 700; }
+.orders-footer { display: flex; align-items: center; gap: 9px; padding: 17px 24px; color: var(--muted); border-top: 1px solid var(--line); font: 11px Arial, sans-serif; text-transform: uppercase; letter-spacing: .08em; }
+.status-dot.small { width: 7px; height: 7px; margin: 0; box-shadow: none; }
+.chat-panel { min-width: 0; display: grid; grid-template-rows: auto 1fr auto; }
+.chat-header { padding: 34px 38px 25px; border-bottom: 1px solid var(--line); }
+.eyebrow { margin: 0 0 12px; color: var(--accent); font: 700 11px/1.2 Arial, sans-serif; letter-spacing: .14em; }
+h1 { margin: 0; font-size: clamp(42px, 8vw, 68px); line-height: .9; font-weight: 400; }
+.subtitle { margin: 14px 0 0; color: var(--muted); font: 15px Arial, sans-serif; }
+.header-divider { margin: 0 6px; color: var(--line); }
+.messages { min-height: 0; padding: 30px 38px; overflow-y: auto; }
+.empty-state { color: var(--muted); text-align: center; padding: 120px 20px; font: 15px Arial, sans-serif; }
+.status-dot { display: block; width: 10px; height: 10px; margin: 0 auto 18px; border-radius: 50%; background: #7d9b66; box-shadow: 0 0 0 7px #7d9b6620; }
+.empty-state button { margin-top: 12px; padding: 10px 13px; color: var(--ink); background: transparent; border: 1px solid var(--line); cursor: pointer; font: 13px Arial, sans-serif; }
+.message { max-width: 82%; margin: 0 0 22px; font: 16px/1.5 Arial, sans-serif; }
+.message.user { margin-left: auto; text-align: right; }
+.message span { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.message p { margin: 5px 0 0; }
+.message.user p { display: inline-block; padding: 11px 15px; color: white; background: var(--ink); text-align: left; }
+.composer { display: flex; gap: 10px; padding: 20px 22px; border-top: 1px solid var(--line); }
+.composer input { min-width: 0; flex: 1; padding: 14px 15px; color: var(--ink); background: #f8f5ee; border: 1px solid var(--line); font: 15px Arial, sans-serif; }
+.composer button { padding: 0 20px; color: white; background: var(--accent); border: 0; cursor: pointer; font: 700 13px Arial, sans-serif; }
+.composer button:disabled { cursor: not-allowed; opacity: .45; }
+@media (max-width: 780px) { .shell { height: 100vh; grid-template-columns: 1fr; align-items: stretch; padding: 16px; overflow-y: auto; } .orders-panel, .chat-panel { height: auto; min-height: 0; } .orders-panel { max-height: 330px; } .order-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow-y: auto; } .orders-footer { display: none; } }
+@media (max-width: 560px) { .chat-panel { min-height: calc(100vh - 32px); } .chat-header { padding: 28px 24px 20px; } .messages { padding: 24px; } .composer { padding: 14px; } .order-list { grid-template-columns: 1fr; } }
+.admin-shell { min-height: 100vh; padding: 32px 16px; }
+.admin-panel { width: min(860px, 100%); margin: 0 auto; background: var(--panel); border: 1px solid var(--line); box-shadow: 0 24px 70px #26332618; }
+.admin-content { padding: 26px 38px 38px; }
+.admin-message, .admin-error { margin: 0; font: 15px/1.5 Arial, sans-serif; color: var(--muted); }
+.admin-error { color: #a13d2e; }
+.approval-row { display: flex; justify-content: space-between; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); font: 15px/1.45 Arial, sans-serif; }
+.approval-row strong { font-size: 16px; }
+.approval-row p { margin: 5px 0 0; color: var(--muted); }
+.approval-row small { display: block; margin-top: 9px; color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.approval-actions { display: flex; align-items: center; gap: 8px; }
+.approval-actions button { padding: 10px 13px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; font: 700 12px Arial, sans-serif; }
+.approval-actions button:first-child { color: white; background: var(--accent); border-color: var(--accent); }
+@media (max-width: 560px) { .admin-content { padding: 24px; } .approval-row { display: block; } .approval-actions { margin-top: 16px; } }
